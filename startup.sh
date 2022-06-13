@@ -1,1 +1,1 @@
-/usr/local/bin/node npx pm2 start ecosystem.config.js --watch; npx pm2 logs;
+npm npx pm2 start ecosystem.config.js --watch; npx pm2 logs;
