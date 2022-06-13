@@ -1,8 +1,10 @@
 const axios = require('axios');
+const {api} = require('./token.json');
+
 
 const destinyAPI = axios.create({
   baseURL: 'https://www.bungie.net/',
-  headers: { 'X-API-Key': '5105dff366ed4174a1b49b2e47d8d24e' },
+  headers: { 'X-API-Key': api },
 });
 
 module.exports = {

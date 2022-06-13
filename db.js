@@ -1,9 +1,11 @@
 const mysql = require('mysql2');
+const {db_user,db_key} = require('./token.json');
+
 
 const dbconn = mysql.createConnection({
     host:"database.discordbothosting.com",
-    user:"u364_xOGq5jcJi0",
-    password:"1sHbBo6^aCaZm803YGc.UdLJ",
+    user:db_user,
+    password:db_key,
     database:"s364_Members",
 })
  module.exports = {
