@@ -1,0 +1,34 @@
+{
+  "name": "Calypso",
+  "version": "3.0.0",
+  "description": "Destiny Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2-runtime start ecosystem.config.js --env production"
+  },
+  "author": "Arya Mukherjee",
+  "license": "GNU GPL V3.0",
+  "dependencies": {
+    "@discordjs/builders": "^0.14.0",
+    "@discordjs/rest": "^0.5.0",
+    "axios": "^0.27.2",
+    "discord-api-types": "^0.33.3",
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
+    "eslint": "^8.17.0",
+    "express": "^4.18.1",
+    "fuzzysort": "^2.0.1",
+    "http": "0.0.1-security",
+    "mysql2": "^2.3.3",
+    "node-cron": "^3.0.0",
+    "nodemon": "^2.0.16",
+    "npm-check-updates": "^13.1.1",
+    "pm2": "^5.2.0",
+    "ps": "^1.0.0",
+    "timezone-abbr-offsets": "1.0.2"
+  },
+  "devDependencies": {
+    "node": "^17.7.2"
+  },
+  "keywords": []
+}

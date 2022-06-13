@@ -1,0 +1,178 @@
+{
+  "personal": {
+    "I'm in: Americas": {
+      "label": "Americas",
+      "emoji": "🇺🇸",
+      "value": "763054695170048090"
+    },
+    "I'm in: Europe": {
+      "label": "Europe",
+      "emoji": "🇪🇺",
+      "value": "763054698504519680"
+    },
+    "I'm in: Middle East": {
+      "label": "Middle East",
+      "emoji": "🇦🇪",
+      "value": "763054699179933776"
+    },
+    "I'm in: Asia": {
+      "label": "Asia",
+      "emoji": "🌏",
+      "value": "763054700206882859"
+    },
+    "I'm in: Oceania": {
+      "label": "Oceania",
+      "emoji": "🦘",
+      "value": "763055372394299412"
+    },
+    "I'm in: Africa": {
+      "label": "Africa",
+      "emoji": "🌍",
+      "value": "763055374412546058"
+    },
+    "I am: Non-binary": {
+      "label": "Non-Binary",
+      "emoji": "smallen:893058704990175273",
+      "value": "763056067403710484"
+    },
+    "I am: Female": {
+      "label": "Female",
+      "emoji": "♀️",
+      "value": "763056068028006430"
+    },
+    "Male": {
+      "label": "Male",
+      "emoji": "♂️",
+      "value": "763056070993117225"
+    },
+    "Enlightened": {
+      "label": "Enlightened",
+      "emoji": "776912622448541796",
+      "value": "785710792405418034"
+    },
+    "Opulent": {
+      "label": "Opulent",
+      "emoji": "824259207536443412",
+      "value": "785712505132810270"
+    },
+    "Sovereign": {
+      "label": "Sovereign",
+      "emoji": "512187875169927179",
+      "value": "785712876451004458"
+    },
+    "Voracious": {
+      "label": "Voracious",
+      "emoji": "761225051525611550",
+      "value": "785712987813183519"
+    }
+  },
+  "misc": {
+    "Movie Madness": {
+      "label": "Movie Madness",
+      "emoji": "🎬",
+      "value": "843307925917532171"
+    },
+    "Other Games": {
+      "label": "Other Games",
+      "emoji": "781215176745287701",
+      "value": "746125245747822802"
+    }
+  },
+  "d2": {
+    "Spoilers": {
+      "label": "Spoilers",
+      "emoji": "792596651247140894",
+      "value": "529704187760607233"
+    },
+    "Raid": {
+      "label": "Raid",
+      "emoji": "893065009704362025",
+      "value": "530098202117013515"
+    },
+    "Crucible": {
+      "label": "Crucible",
+      "emoji": "420977934224850954",
+      "value": "591380257853145120"
+    },
+    "Gambit": {
+      "label": "Gambit",
+      "emoji": "896578268961075200",
+      "value": "591380338559811636"
+    },
+    "Strike": {
+      "label": "Strike",
+      "emoji": "759150242808987660",
+      "value": "591384385320779783"
+    },
+    "D2 Helper": {
+      "label": "D2 Helper",
+      "emoji": "744724504990973993",
+      "value": "591385328288268308"
+    },
+    "Iron Banner": {
+      "label": "Iron Banner",
+      "emoji": "826858005781938196",
+      "value": "591389851157397504"
+    },
+    "Dungeon": {
+      "label": "Dungeon",
+      "emoji": "751537750540550256",
+      "value": "637046418384617493"
+    },
+    "Endgame": {
+      "label": "Endgame",
+      "emoji": "902187284638609439",
+      "value": "682750009543884809"
+    },
+    "Seasonal": {
+      "label": "Seasonal",
+      "emoji": "893058704990175273",
+      "value": "682750171893071884"
+    },
+    "Trials": {
+      "label": "Trials",
+      "emoji": "393686201091227649",
+      "value": "684855980227428429"
+    },
+    "PvPractice": {
+      "label": "PvPractice",
+      "emoji": "888599108678455327",
+      "value": "696039952542203985"
+    },
+    "Comp": {
+      "label": "Survival",
+      "emoji": "803685292082593840",
+      "value": "726643392972324926"
+    },
+    "Low Mans": {
+      "label": "Low Mans",
+      "emoji": "933100627242934312",
+      "value": "847895596824002590"
+    },
+    "Speedrun": {
+      "label": "Speedrun",
+      "emoji": "835189566771822662",
+      "value": "860331476700364820"
+    },
+    "Day1Raider": {
+      "label": "Day 1 Raider",
+      "emoji": "796447191542923285",
+      "value": "821171872720617492"
+    },
+    "Day1LFG": {
+      "label": "Day 1 LFG",
+      "emoji": "778084818872303667",
+      "value": "821173511481327616"
+    },
+    "Uswod": {
+      "label": "Uswod",
+      "emoji": "326430319911763988",
+      "value": "930876329681891358"
+    },
+    "Patrol": {
+      "label": "Patrol",
+      "emoji": "910643970663661608",
+      "value": "930878774143254638"
+    }
+  }
+}

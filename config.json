@@ -1,0 +1,65 @@
+{
+	"version": "1.3.0",
+	"token": "ODc4OTY4NjQwOTU3OTcyNDkw.YSI5Vg.8IS3OSzWtc6Zoa_Bi2k_TWV2KtA",
+    "activity": 14,
+	"roles": {
+		"paranoid": "249326668362153994",
+		"guest": "249323552019316747",
+		"access": "730291935570296882",
+		"member": "524068467314524161",
+		"checkmark": "303172466497290242",
+		"assignables": "507473807460663297",
+		"my_branch": "720728631936286731",
+		"about_me": "764313061854019635",
+		"unassigned": "267141331640385546",
+		"recruiter": "262239361087701002",
+        "head": "249328013139771402",
+		"psychopath": "243409210128334848",
+		"opulent": "687056426916380704",
+		"ascended": "721258079265620018",
+		"enlightened": "709498587943272519",
+		"transcendent": "767064645881299025",
+		"sovereign": "687056428309020895",
+		"voracious": "692080580430659584",
+        "luminous": "767064645881299025",
+		"muted": "304304117801549824",
+        "swords": "884486111869665350",
+        "skulls": "884485833342713906",
+        "snakes": "955946322991665172",
+        "leave":"255904430967357440",
+        "scheduled": "939649545426591754",
+        "moderator":"695064064338034738"
+	},
+	"branchData": {
+		"om": {
+			"name": "Opulent",
+			"symbol": "♧",
+			"groupId": "3678940",
+			"roleId": "687056426916380704"
+		},
+		"em": {
+			"name": "Enlightened",
+			"symbol": "♤",
+			"groupId": "4225691",
+			"roleId": "709498587943272519"
+		},
+		"sm": {
+			"name": "Sovereign",
+			"symbol": "♡",
+			"groupId": "3993665",
+			"roleId": "687056428309020895"
+		},
+		"vm": {
+			"name": "Voracious",
+			"symbol": "♢",
+			"groupId": "4164697",
+			"roleId": "692080580430659584"
+		},
+        "am": {
+			"name": "Ascended",
+			"symbol": "φ",
+			"groupId": "4263239",
+			"roleId": "721258079265620018"
+		}
+	}
+}

@@ -1,0 +1,228 @@
+{
+    "activity":{
+        "embed":{
+            "description":"This command looks at all the members of the selected branch and checks whether it's been 2 weeks since they've logged into the game or been active in the Discord.",
+            "fields":[
+                {
+                    "name":"Required Options",
+                    "value":"> `branch` : Which branch to check activity for."
+                }
+            ]
+        },
+        "images":[ ]
+    },
+    "calendar":{
+        "embed":{
+            "description":"This command adds an event to the clan calendar with the specified time and date.",
+           "fields":[
+               {
+                    "name":"Required Options",
+                    "value":"> `event`: The name of the event being scheduled.\n> `hour`: Select the hour you want (in a 24h format).\n> `minutes` : Used to futher specify the time that you want.\n> `date`:  Used to specify the date that you want.\n> `month`: Used to specify the month that you want."
+                },
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `timezone`: Used to specify the timezone you are in."                
+                }
+            ]
+        },
+        "images":[
+            
+        ]
+    },
+    "check":{
+        "embed":{
+            "description":"This command goes through the Discord members and checks they have the right nickname (Bungie name, prestige, clan and star symbols)"
+        },
+        "images":[]
+    },
+    "d2":{
+        "embed":{
+            "description":"This command registers a new member (or guest) as a clan member and sets up their roles.\n It can also be used to do branch changes for members.",
+            "fields":[
+                {
+                    "name":"Required Options",
+                    "value":"> `member` : Which member to handle.\n> `branch` : Which branch to assign the member to."
+                },
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `url` : Bungie URL for the member's so Caly can pull their in-game info (Not needed for branch changes)."                
+                }
+            ]
+        },
+        "images":[]
+    },
+    "guest":{
+        "embed":{
+            "description":"This command sets a new member as a guest until their 2 day period is over and they're kicked. It can also have a branch specified if the member is waiting to be accepted into one of the branches or is more interested in one of the branches while they look around.",
+            "fields":[
+                {
+                    "name":"Required Options",
+                    "value":"> `member` : Which member to handle."
+                },
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `branch` : Which branch to assign the member to."                
+                }
+            ]
+        },
+        "images":[]
+    },
+    "hof":{
+        "embed":{
+            "description":"This commands handles adding new records to the Hall of Fame, deleting records and updating the whole thing to ensure all records are tracked, stars are allocated and the message in the channel is up to date",
+            "fields":[
+                {
+                    "name":"__Add__\nThis subcommand adds a record to the HoF database",
+                    "value":"**Required Options**\n> `activity` : The corresponding activity number for the record being added.\n> `url` : The URL linking to the proof for the record (Raids - Youtube, Dungeons - Dungeon Report, GMs - Strike Report, PvP - Post Game DTR Screenshot Mainly).\n> `value` : The number for the record. Minutes only for time focused records, otherwise just the number (e.g 5500 for Legend).\n> `member_1` : The main member in the record.\n**Supplementary Options**\n> `description` : A description of the sub-category for the record (Exact strike names for GMs, Boss names for raids, \"Legend\" for Comp).\n> `secs` : The seconds portion of the time.\n> `member_2→6` : The other members in the record."
+                },
+                {
+                    "name":"__Check__\n This subcommand refreshes all the backend tracked data on records and stars for HoF this season",
+                    "value":"No options required"
+                },
+                {
+                    "name":"__Delete__\n This subcommand removes the specified record from the HoF database",
+                    "value":"**Required Options**\n> `id` : The id of the record that you want to be removed from the database (ID can be found by fetching HoF records of the relevant category)."
+                },
+                {
+                    "name":"__Setup__\n This subcommand refreshes the HoF message to keep it up to date",
+                    "value":"No options required"
+                }
+            ]
+        },
+        "images":[
+            
+        ]
+    },
+    "id":{
+        "embed":{
+            "description":"This command returns the join code of any member in the server. By default it will show your join code but you can also get other people's join codes.",
+            "fields":[
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `member` : Which member's join code to get instead of the command user."                
+                }
+            ]
+        },
+        "images":[]
+    },
+    "link":{
+        "embed":{
+            "description":"This commmand generates the link to your profile on useful Destiny 2 tracker websites such as Raid Report or Destiny Tracker.\nIt can also get links for other members (or a whole branch if you choose the purple branch role as a staff member) if you specify them as the second option",
+            "fields":[
+                {
+                    "name":"Required Options",
+                    "value":"> `site` : What website to generate the URL for."
+                },
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `member` : Which member/ branch to generate the link(s) for instead."                
+                }
+            ]
+        },
+        "images":[]
+    },
+    "prestige":{
+        "embed":{
+            "description":"This command gives the specified prestige symbol and role to a member",
+            "fields":[
+                {
+                    "name":"Required Options",
+                    "value":"> `member` : Which member to handle.\n> `role` : What type of prestige to give."
+                }
+            ]
+        },
+        "images":[]
+    },
+    "records":{
+        "embed":{
+            "description":"This command shows all the records the member has in the Hall of Fame this season. The records that are giving star progress are in bold and if a staff member uses this command to get the records of another user, the number on the side will be the unique record ID.",
+            "fields":[
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `member` : Which member's records to get instead of the command user."                
+                }
+            ]
+        },
+        "images":[]
+    },
+    "recruitment":{
+        "embed":{
+            "description":"This command lists all the branches, with hyperlinks that lead you to the Bungie page when clicked on if no option is provided. If a branch is specified however, it will reply with the link to the Bungie page for that branch.",
+            "fields":[
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `branch` : Which branch clan page link to return."                
+                }
+            ]
+        },
+        "images":[]
+    },
+    "roles":{
+        "embed":{
+            "description":"This command handles the control of the self-assignable roles.",
+            "fields":[
+                {
+                    "name":"__Add__\nThis subcommand adds a role to the sef-assign menu under a specified category. If no role with the name specified exists then a new role is created. After the role has been added to the menu in the backend, the menu is refreshed to show the changes",
+                    "value":"**Required Options**\n> `name` : What the name of the role should be/ is.\n> `emoji` : What emoji should be associated with the role in the menu.\n> `category` : Which category menu the role should be put under (Personal, Miscallaneous or D2)."
+                },
+                {
+                    "name":"__Remove__\n This subcommand removes the specified role from the self-assign menu",
+                    "value":"**Required Options**\n> `role` : The role that you want to be removed from the menu (Doesn't delete said role)."
+                },
+                {
+                    "name":"__Setup__\n This subcommand refreshes the self-assign menu if there's any issues or discrepancies",
+                    "value":"No options required"
+                }
+            ]
+        },
+        "images":[]
+    },
+    "schedule":{
+        "embed":{
+            "description":"This command handles adding scheduled events, deleting events that are scheduled, and viewing the calendar with the scheduled events for the upcoming week",
+            "fields":[
+                {
+                    "name":"__Add__\nThis subcommand adds events to the scheduled events database",
+                    "value":"**Required Options**\n> `host`: The person who will host this activity.\n> `hour`: Select the hour this event will be hosted on (in a 24h format).\n> `event`: Specifies which activity will be hosted (i.e. a raid or a nightfall).\n> `type`: Specifies the type of the activity (i.e. Grandmaster nightfall or Flawless raid).\n**Supplementary options**\n> `minutes` : Used to futher specify the time that the event will be hosted at.\n> `timezone`: Used to specify the timezone you are in.\n> `date`: Select the date of the current month the activity will be hosted on (defaults to tomorrow).\n> `month`: Complementary to the date option, helps to select the correct month (defaults to the current month).\n> `comments`: Used to add additional comments about the activity which can't be added otherwise (i.e. you are hosting a raid marathon)."
+                },
+                {
+                    "name":"__Remove__\n This subcommand removes the specified activity from the database",
+                    "value":"**Required Options**\n> `id` : The id of the activity you want removed (can be found via the calendar subcommand)."
+                },
+                {
+                    "name":"__Calendar__\n This subcommand shows the upcoming activities for the next week",
+                    "value":"**Supplementary options**\n> `host`: Choose a specific host to show their scheduled activities."
+                }
+            ]
+        },
+        "images":[
+            
+        ]
+    },
+    "time":{
+        "embed":{
+            "description":"This command converts the specified date and time to a special Discord version which can be copied and pasted in Discord to show a text timer that counts down to the time specified.",
+           "fields":[
+               {
+                    "name":"Required Options",
+                    "value":"> `hour`: Select the hour you want (in a 24h format).\n> `minutes` : Used to futher specify the time that you want."
+                },
+                {
+                    "name":"Supplementary Options",
+                    "value":"> `timezone`: Used to specify the timezone you are in.\n> `date`:  Used to specify the date that you want (defaults to today).\n> `month`: Used to specify the month that you want (defaults to the current month)."                
+                }
+            ]
+        },
+        "images":[
+            
+        ]
+    },
+    "validate":{
+        "embed":{
+            "description":"This command makes a list of all members who need to be kicked from Discord or kicked from their in-game clan for being in one but not the other."
+        },
+        "images":[
+            
+        ]
+    }
+}
