@@ -3,7 +3,7 @@ const fs = require('fs');
 const config = require('./config.json');
 const {token} = require('./token.json')
 const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v10');
+const { Routes } = require('discord-api-types/v9');
 const db = require('./db.js');
 const api = require('./api.js');
 
@@ -70,12 +70,12 @@ module.exports = {
 			commands.push(command.data.toJSON());
 		};
         // establishes a connection with the API
-		const rest = new REST({ version: '10' }).setToken(token);
+		const rest = new REST({ version: '9' }).setToken(token);
 		(async () => {
 			try {
 				console.log('Started refreshing application (/) commands.');
                 // pushes all the commands to the API
-				let allCommands = await rest.put(Routes.applicationGuildCommands(clientId, guildId),{ body: commands });
+				await rest.put(Routes.applicationGuildCommands(clientId, guildId),{ body: commands });
                 console.log('Successfully reloaded application (/) commands.');
 			} 
             catch (error) {console.error(error)}
