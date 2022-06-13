@@ -58,7 +58,6 @@ module.exports = {
     // sets up the commands in the discord api
     commandRegister: function(guild) {
     	const commands = [];
-        const commandPerms ={};
         // finds all the command files
         const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 		const clientId = '878968640957972490';

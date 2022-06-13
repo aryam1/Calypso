@@ -63,5 +63,23 @@ module.exports = {
         const resp = await this.callAPI(requestURL).catch(e=>error=true);
         if(error) return null;
         return resp.data.Response.results;
-  },
+    },
+    getCharacters: async function(membershipType,membershipId) {
+        // formats URL and query parameters
+        const requestURL = `/Platform/Destiny2/${membershipType}/Profile/${membershipId}/?components=200`;
+        // gets data and sorts all the returned profiles
+        let error = false;
+        const resp = await this.callAPI(requestURL).catch(e=>error=true);
+        if(error) return null;
+        return resp.data.Response.characters.data
+    },
+    getRaids: async function(membershipType,membershipId,characterId){
+        // formats URL and query parameters
+        const requestURL = `/Platform/Destiny2/${membershipType}/Account/${membershipId}/Character/${characterId}/Stats/Activities/?page=0&count=10&mode=4`;
+        // gets data and sorts all the returned profiles
+        let error = false;
+        const resp = await this.callAPI(requestURL).catch(e=>error=true);
+        if(error) return null;
+        return resp.data.Response.activities
+    }
 };
