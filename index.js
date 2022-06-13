@@ -119,7 +119,7 @@ Client.on('interactionCreate', async interaction => {
                     data.push("Boost","Button", null, null)
                     const guild = Client.guilds.cache.get('232961095571210251');
                     // gives pink role
-                    utils.changeRole(await guild.members.fetch(interaction.user.id),"845990426901086209",'add');
+                    await guild.members.fetch(interaction.user.id).then(member=>member.roles.add("845990426901086209"))
                     interaction.deferUpdate()
                     break;
             }
@@ -263,7 +263,7 @@ Client.on("guildMemberUpdate", function(oldMember, newMember){
     // if they've boosted or removed their boos
     if (oldMember.premiumSinceTimestamp == null || newMember.premiumSinceTimestamp == null) {
         // remove pink role if they removed boost
-        if (newMember.premiumSinceTimestamp == null) {utils.changeRole(newMember,"845990426901086209",'remove')}
+        if (newMember.premiumSinceTimestamp == null) {newMember.roles.remove("845990426901086209")}
         else {
             // send message asking if they want pink role for boosting
             const row = (new Discord.MessageActionRow())

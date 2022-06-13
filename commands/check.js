@@ -20,14 +20,12 @@ module.exports = {
                         await utils.validateName(member).then(async newName=>{
                             if (newName !== member.displayName){member.setNickname(newName)};
                             // gives member roles 
-                            utils.changeRole(member,roles.member,'add');
-                            utils.changeRole(member,roles.checkmark,'add');
+                            member.roles.add([roles.member,roles.checkmark])
                         });
                     }
                     else{
                         // remove member roles if they're not registered
-                        utils.changeRole(member,roles.member,'remove');
-                        utils.changeRole(member,roles.checkmark,'remove');
+                        member.roles.remove([roles.member,roles.checkmark])
                     }
                 }
             });
