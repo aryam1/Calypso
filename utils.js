@@ -16,12 +16,6 @@ module.exports = {
         return branch;
     },
     
-    //Change member roles
-    changeRole(member,role,type) {
-        if (type == 'add') { if (!member._roles.includes(role)){member.roles.add(role)} }
-        else { if(member._roles.includes(role)){member.roles.remove(role)} }
-    },
-    
      // Formats username as Bungie name
     validateName: async function(member,full = true,fetch=false) {
         let name='';

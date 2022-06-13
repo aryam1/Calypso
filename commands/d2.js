@@ -117,8 +117,8 @@ module.exports = {
                         // pushes info to db
                 		db.userRegister(member).then(async _ => {
                             // adds and removes relevant roles
-                            await rolesToAdd.forEach(role=> utils.changeRole(memberObj,role,'add'));
-                            await rolesToRemove.forEach(role=> utils.changeRole(memberObj,role,'remove'));
+                            await memberObj.roles.add(rolesToAdd);
+                            await memberObj.roles.remove(rolesToRemove);
                             // sets nickname
                             const name = await utils.validateName(memberObj,false);
                             memberObj.setNickname(name + ' ' + branchData[branch].symbol);
