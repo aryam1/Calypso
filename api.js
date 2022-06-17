@@ -81,5 +81,12 @@ module.exports = {
         const resp = await this.callAPI(requestURL).catch(e=>error=true);
         if(error) return null;
         return resp.data.Response.activities
+    },
+    getActivityReport: async function(id){
+        const requestURL = `/Platform/Destiny2/Stats/PostGameCarnageReport/${id}/`;
+        let error = false;
+        const resp = await this.callAPI(requestURL).catch(e=>error=true);
+        if(error) return null;
+        return resp.data.Response.entries
     }
 };

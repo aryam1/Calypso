@@ -7,7 +7,7 @@ module.exports = {
     'ignore_watch' : ['unused','node_modules','.pm2','.npm','.config','./**/**.json', ],     
     'instances': "1",
     'log_date_format':"YYYY-MM-DD HH:mm:ss Z",
-    'max_memory_restart': '100M',
+    'max_memory_restart': '210M',
     "node_args": [
         "--max_old_space_size=200"
     ],
