@@ -4,7 +4,7 @@ const api = require('../api.js');
 const {roles,branchData} = require('../config.json');
 
 module.exports = {
-	data: new SlashCommandBuilder().setDescription('Checks Stuff').setDefaultPermission(false),
+	data: new SlashCommandBuilder().setDescription('Checks Sov members who haven\'t raided with the clan in 2 weeks').setDefaultPermission(false),
 	async execute(interaction) {
         // puts off replying to interaction
         await interaction.deferReply();        
