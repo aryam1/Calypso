@@ -24,6 +24,7 @@ module.exports = {
         }
         for (let i = 0; i<sovMembers.length; i++){
             const mem = sovMembers[i];            
+            const rr = `<https://raid.report/${['xb','ps','pc'][mem.destinyUserInfo.membershipType-1]}/${mem.destinyUserInfo.membershipId}>`;
             const memName = (mem.destinyUserInfo.bungieGlobalDisplayName? mem.destinyUserInfo.bungieGlobalDisplayName:mem.destinyUserInfo.displayName).substr(0,30);
             let chars = Object.keys(await api.getCharacters(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId));
             if (chars.length == 0) continue
@@ -33,7 +34,7 @@ module.exports = {
             });
             totalRaids = (await Promise.all(totalRaids)).flat()
             if (totalRaids.length<2){
-                noRaids.push(memName);
+                noRaids.push(`[${memName}](${rr})`);
                 continue;
             }
             Promise.all(totalRaids.map(async raid=>{
@@ -44,7 +45,7 @@ module.exports = {
                     return (allNames.includes(name)) ? [...total,name] : total;
                 },[]);
                 return (names?.length>1) ? true:false;
-            })).then(values=> {if (values.filter(Boolean).length<2) noClan.push(memName)});
+            })).then(values=> {if (values.filter(Boolean).length<2) noClan.push(`[${memName}](${rr})`)});
         };
         console.log(noRaids.length +" Members haven't raided in the past 2 weeks")
         
