@@ -32,7 +32,7 @@ module.exports = {
                 let raids = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,4);
                 return (raids == null) ? [] : (raids?.filter(raid=>new Date(raid.period) > (new Date()-1209600000)))?.map(raid=>raid.activityDetails.instanceId); 
             });
-            totalActs = (await Promise.all(totalRaids)).flat()
+            let totalActs = (await Promise.all(totalRaids)).flat()
             if (totalActs.length<2){
                 let totalDungeon = chars.map(async char=>{
                     let duns = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,82);
