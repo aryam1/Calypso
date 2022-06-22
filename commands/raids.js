@@ -4,11 +4,11 @@ const api = require('../api.js');
 const {roles,branchData} = require('../config.json');
 
 module.exports = {
-	data: new SlashCommandBuilder().setDescription('Checks Sov members who haven\'t raided with the clan in 2 weeks').setDefaultPermission(false),
+	data: new SlashCommandBuilder().setDescription('Checks Sov members who haven\'t done PvE with the clan in 2 weeks').setDefaultPermission(false),
 	async execute(interaction) {
         // puts off replying to interaction
         await interaction.deferReply();        
-        let finalEmbed = new Discord.MessageEmbed().setColor('RED').setTitle('Members who don\'t meet the raid requirement');
+        let finalEmbed = new Discord.MessageEmbed().setColor('RED').setTitle('Members who don\'t meet the PvE requirement');
         const allNames = [];
         let sovMembers = [];
         let noAct = [];
@@ -28,22 +28,16 @@ module.exports = {
             const memName = (mem.destinyUserInfo.bungieGlobalDisplayName? mem.destinyUserInfo.bungieGlobalDisplayName:mem.destinyUserInfo.displayName).substr(0,30);
             let chars = Object.keys(await api.getCharacters(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId));
             if (chars.length == 0) continue
-            let totalRaids = chars.map(async char=>{
+            let totalActs = chars.map(async char=>{
                 let raids = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,4);
-                return (raids == null) ? [] : (raids?.filter(raid=>new Date(raid.period) > (new Date()-1209600000)))?.map(raid=>raid.activityDetails.instanceId); 
+                let duns = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,82);
+                let acts = [...raids||[], ...duns||[]];
+                return (acts == null) ? [] : (acts?.filter(act=>new Date(act.period) > (new Date()-1209600000)))?.map(act=>act.activityDetails.instanceId); 
             });
-            let totalActs = (await Promise.all(totalRaids)).flat()
+            totalActs = (await Promise.all(totalActs)).flat()
             if (totalActs.length<2){
-                let totalDungeon = chars.map(async char=>{
-                    let duns = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,82);
-                    return (duns == null) ? [] : (duns?.filter(dun=>new Date(dun.period) > (new Date()-1209600000)))?.map(dun=>dun.activityDetails.instanceId); 
-                });
-                totalDungeon = (await Promise.all(totalDungeon)).flat()
-                if (totalDungeon.length<2){
-                    noAct.push(`[${memName}](${rr})`);
-                    continue;
-                }
-                totalActs = totalActs.concat(totalDungeon);
+                noAct.push(`[${memName}](${rr})`);
+                continue;
             }
             Promise.all(totalActs.map(async act=>{
                 let names = (await api.getActivityReport(act))?.reduce((total,current)=>{
@@ -58,7 +52,7 @@ module.exports = {
         console.log(noAct.length +" Members haven't done PvE in the past 2 weeks")
         
         noClan = noClan.reduce((total,current)=>`${total}\n${current},`,'')
-        noRaids = noAct.reduce((total,current)=>`${total}\n${current},`,'')
+        noAct = noAct.reduce((total,current)=>`${total}\n${current},`,'')
         
         finalEmbed.addField('2 Raids/Dungeons Not Done with Clan Members in Past 2 Weeks',noClan,true)
         finalEmbed.addField('2 Raids/Dungeons Not Done in Past 2 Weeks',noAct,true)

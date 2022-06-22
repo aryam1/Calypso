@@ -204,8 +204,8 @@ module.exports = {
         // otherwise it's a react button on a post
         else{
             const newEmbd = new Discord.MessageEmbed(interaction.message.embeds[0]); 
-            const player2 = await interaction.member.nickname.replace(/(♧|♢|♤|♡|φ|☠|⚔|✮|§|,)+/g,'').trim();
-            const player = interaction.member.nickname.trim();
+            // removes trailing whitespaces and special symbols from name
+            const player = await interaction.member.nickname.replace(/(♧|♢|♤|♡|φ|☠|⚔|✮|§|,)+/g,'').trim();
             // extracts button target
             let id = interaction.customId.split('-')[1];
             // default limit for 6 man events
@@ -239,7 +239,7 @@ module.exports = {
             // if member is a learner or it's a 3 man event, limit is set to 2
             if(man3.includes(newEmbd.title) || id == 'Learner') limit = 2;
             // processes the current reaction fields and reaction data to determine new reaction fields 
-            fields= await (this.reactionHandle(fields,title,player2,learn,sub,limit)).sort((a,b)=>a.name.length-b.name.length)
+            fields= await (this.reactionHandle(fields,title,player,learn,sub,limit)).sort((a,b)=>a.name.length-b.name.length)
             interaction.deferUpdate()
             // spreads constant fields and reaction fields and joins them to be the fields of the new embeds
             newEmbd.fields=[...static,...fields];
@@ -253,9 +253,8 @@ module.exports = {
         interaction.deferUpdate();
         // if no values were selected don't do anything
         if (interaction.values.includes('none')) return null
-        const player2 = await interaction.member.nickname.replace(/(♧|♢|♤|♡|φ|☠|⚔|✮|§|,)+/g,'').trim();
-        // removes trailing whitespaces from name
-        const player = interaction.member.nickname.trim();
+        // removes trailing whitespaces and special symbols from name
+        const player = await interaction.member.nickname.replace(/(♧|♢|♤|♡|φ|☠|⚔|✮|§|,)+/g,'').trim();
         // spreads and copies the current fields
         let fields = [...interaction.message.embeds[0].fields];
         // copies embed
@@ -276,7 +275,7 @@ module.exports = {
         let groups = raids.map(a => fields.filter(b => b.name.includes(a)));
         const groupIndex = raids.indexOf(ops[0]);
         // processes the current reaction fields and reaction data to determine new reaction fields 
-        groups[groupIndex]=(this.reactionHandle(groups[groupIndex],ops[0],player2,learn,sub,learn? 2:5)).sort((a,b)=>a.name.length-b.name.length);
+        groups[groupIndex]=(this.reactionHandle(groups[groupIndex],ops[0],player,learn,sub,learn? 2:5)).sort((a,b)=>a.name.length-b.name.length);
         // spreads constant fields and reaction fields and joins them to be the fields of the new embeds
         newEmbd.fields=[...static,...groups.flat()];
         // replaces the event embed with new embed with updated field
@@ -284,10 +283,12 @@ module.exports = {
     },
     
     reactionHandle(group,activity,player,learn = false, sub= false,limit){
+        // sanitizes name for regex insertion
+        let playerClean = player.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
         // generates field name for the user's selection
         let target = (`${activity}${learn?' Learner':''}${sub?' Substitutes':''}`).trim();
         // sets up regex to identfy user's name following or preceding a comma
-        let reg = new RegExp(`(${player}\,?)|(\,${player})`,'g')
+        let reg = new RegExp(`(${playerClean}\,?)|(\,${playerClean})`,'g')
         // checks if any fields already contain the user's name
         let exist = group.findIndex(f=>f.value.includes(player));
         if (exist>=0){
