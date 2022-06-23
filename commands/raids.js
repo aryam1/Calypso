@@ -46,6 +46,7 @@ module.exports = {
                                 current.player.destinyUserInfo.displayName).substr(0,30);
                     return (allNames.includes(name)) ? [...total,name] : total;
                 },[]);
+                //if (["4611686018507308128",].includes(mem.destinyUserInfo.membershipId)) {console.log(names)}
                 return (names?.length>1) ? true:false;
             })).then(values=> {if (values.filter(Boolean).length<2) noClan.push(`[${memName}](${rr})`)});
         };
