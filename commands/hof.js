@@ -63,7 +63,7 @@ const pveRow = new Discord.MessageActionRow().addComponents(
         {label: 'Grasp Of Avarice Solo Flawless',description: 'Select Grasp of Avarice Runs',value: 'goa'},
         {label: 'Prophecy Solo Flawless',description: 'Select Prophecy Runs',value: 'prophecy'},
         {label: 'Pit Of Heresy Solo Flawless',description: 'Select Pit of Heresy Runs',value: 'poh'},
-        {label: 'Shattered Throne Solo Flawless',description: 'Select Shattered Throne Runs',value: 'st'},
+        {label: 'Shattered Throne Solo Flawless',description: 'Select Shattered Throne Runs',value: 'st solo'},
         {label: 'Solo Grandmaster',description: 'Select Solo Grandmaster Runs',value: 'gm'},
     ]),
 );
@@ -269,9 +269,6 @@ module.exports = {
             // if category is timed then interpret the value in seconds as a time string
             if (!notTimedActivities.includes(record.Activity)) {
                 time = `${('00'+Math.floor(record.Value/3600)).substr(-2)}:${('00'+Math.floor(record.Value%3600/60)).substr(-2)}:${record.Value%60}`;
-                //time=new Date(null);
-                //time.setSeconds(record.Value);
-                //time = time.toTimeString().split(' ')[0];
             };
             // put details of fetched record into embed for user to check
             const embeddedMessage = new Discord.MessageEmbed()
@@ -333,7 +330,6 @@ module.exports = {
             // if the category is not ranked or the inserted record is the first in the category
             if (soloStars.includes(parseInt(activity)) || current.length<2) {
                 // give stars to members of new record
-                //let currentMembers = current.filter(rec=>rec.Description==desc).map(rec=> Object.values(rec).slice(-6).filter(x=>x)).flat();
                 await utils.changeStars(1,members,interaction);
             }
             // if the new record is the best in the category now
@@ -377,9 +373,6 @@ module.exports = {
             for (let choice of interaction.values){
                 let res = fuzzysort.go(choice,filteredResults,{threshold:-100})
                 filteredResults = res.reduce((total,curr)=>[...total,curr.target],[]);
-                //let tempResults = [];
-                //for (var result of res) tempResults.push(result.target);
-                //filteredResults = tempResults
             }
             // if no categories remain after fuzzy matching all values, error
             if (filteredResults.length == 0){
@@ -409,9 +402,6 @@ module.exports = {
                     let time = -record[2];
                     if (!notTimedActivities.includes(results[i].Activity)) {
                         time = `${('00'+Math.floor(record[2]/3600)).substr(-2)}:${('00'+Math.floor(record[2]%3600/60)).substr(-2)}:${record[2]%60}`;
-                        //time=new Date(null);
-                        //time.setSeconds(record[2]);
-                        //time = time.toTimeString().split(' ')[0];
                     };
                     // sets description field as link if no description exists
                     let desc = (record[3]==null)? 'Link' : record[3];
@@ -440,9 +430,8 @@ module.exports = {
         await interaction.deferReply({ephemeral:true});
         let target = await interaction.options.getUser('target');
         // assigns target to interaction creater if no target is specified
-        target ??= interaction.member.user;      
-        let id= target.id;
-        let name= target.username;
+        target ??= interaction.member.user;
+        let {id,username} = target; 
         // fetches total number of records for user this season
         let total = await db.recordsGet(id);
         // gets season
@@ -450,7 +439,7 @@ module.exports = {
         // gets all records by user this season
         let results = await db.hofFetchAll(season,id);
         // sets up results embed
-        const embed = new Discord.MessageEmbed().setColor('PURPLE').setTitle(`${total} S${season} Records for ${name}`).setTimestamp()
+        const embed = new Discord.MessageEmbed().setColor('PURPLE').setTitle(`${total} S${season} Records for ${username}`).setTimestamp()
         .setFooter({text:'Calypso', iconURL: 'https://upload.wikimedia.org/wikipedia/commons/0/05/Jan_Styka_-_Kalipso.jpg'});
         let resultText=''
         for (let i=0; i < results.length; i++){
@@ -465,9 +454,6 @@ module.exports = {
             // parses value as time string if timed category
             if (!notTimedActivities.includes(results[i].Activity)) {
                 time = `${('00'+Math.floor(record[2]/3600)).substr(-2)}:${('00'+Math.floor(record[2]%3600/60)).substr(-2)}:${record[2]%60}`;
-                //time=new Date(null);
-                //time.setSeconds(record[2]);
-                //time = time.toTimeString().split(' ')[0];
             };
             // concatenates description with category name if description exists
             let desc = (record[3]==null)? entry : `${entry}-${record[3]}`;
