@@ -17,7 +17,7 @@ const dbconn = mysql.createConnection({
          return new Promise(function(resolve,reject) {
              dbconn.query('SELECT Discord,UserInfo FROM members',(err,res) => {
                  // reduces array of objects into array of arrays, first array with Discord ids and second array with in-game info
-                 resolve(res.reduce((total,current)=>{ return [[...total[0],current.Discord],[...total[1],current.userInfo]] },[ [], [] ]));
+                 resolve(res.reduce((total,current)=>{ return [[...total[0],current.Discord],[...total[1],current.UserInfo]] },[ [], [] ]));
              });
          });
      },

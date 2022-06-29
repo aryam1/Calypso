@@ -29,10 +29,10 @@ module.exports = {
             let chars = Object.keys(await api.getCharacters(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId));
             if (chars.length == 0) continue
             let totalActs = chars.map(async char=>{
-                let raids = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,4);
-                let duns = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,82);
+                let raids = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,4,0,50);
+                let duns = await api.getActivities(mem.destinyUserInfo.membershipType,mem.destinyUserInfo.membershipId,char,82,0,100);
                 let acts = [...raids||[], ...duns||[]];
-                return (acts == null) ? [] : (acts?.filter(act=>new Date(act.period) > (new Date()-1209600000)))?.map(act=>act.activityDetails.instanceId); 
+                return (acts == null) ? [] : (acts?.filter(act=>new Date(act.period) > (new Date()/(86400000)-14)))?.map(act=>act.activityDetails.instanceId); 
             });
             totalActs = (await Promise.all(totalActs)).flat()
             if (totalActs.length<2){

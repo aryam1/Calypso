@@ -39,7 +39,6 @@ Client.on('ready', async () => {
     // get the command folder and set the files as commands
 	await utils.commandRegister(madnessGuild);
     const now = new Date();
-
     // Fetches Group Recruitment messages
     madnessGuild.channels.fetch('528308653883916308').then(chan=>chan.messages.fetch())
 

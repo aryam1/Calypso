@@ -73,12 +73,13 @@ module.exports = {
         if(error) return null;
         return resp.data.Response.characters.data
     },
-    getActivities: async function(membershipType,membershipId,characterId,mode){
+    getActivities: async function(membershipType,membershipId,characterId,mode,page=0){
         // formats URL and query parameters
-        const requestURL = `/Platform/Destiny2/${membershipType}/Account/${membershipId}/Character/${characterId}/Stats/Activities/?count=200&mode=${mode}`;
+        const requestURL = `/Platform/Destiny2/${membershipType}/Account/${membershipId}/Character/${characterId}/Stats/Activities/`;
+        const params = { count: 50, mode:mode, page:page };
         // gets data and sorts all the returned profiles
         let error = false;
-        const resp = await this.callAPI(requestURL).catch(e=>error=true);
+        const resp = await this.callAPI(requestURL,params).catch(e=>error=true);
         if(error) return null;
         return resp.data.Response.activities
     },

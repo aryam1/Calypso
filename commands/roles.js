@@ -79,6 +79,7 @@ module.exports = {
             const cat = interaction.options.getString('category');
             // check if emoji is valid and in the server
             if (emoji?.length !== 2) { interaction.editReply("Use a proper emoji from this server"); return null }
+            await interaction.guild.emojis.fetch();
             if (!interaction.guild.emojis.cache.has(emoji[1])) { interaction.editReply("Use a proper emoji from this server"); return null }
             // checks if role is alread in json file
             if (name in assigns[cat]) { interaction.editReply("Role already in master list, use /roles setup to refresh"); return null }
